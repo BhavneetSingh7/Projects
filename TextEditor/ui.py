@@ -43,13 +43,13 @@ margin.grid(row=0,column=3)
 scroll = Scrollbar(root)
 
 editArea = Text(root,width=140,height=39,yscrollcommand=scroll.set)
-t = editArea.get("1.0","1.10")
+# t = editArea.get("1.0","1.10")
 editArea.grid(row=0,column=4,sticky=(N,E,W,S))
 
 scroll.grid(row=0,column=5, sticky=(N,S))
 scroll.config(command=editArea.yview)
 
-l = Label(margin,text="b hgvferwferer42433hv"+str(t))
-l.grid(row=1,column=1)
+# l = Label(margin,text="b hgvferwferer42433hv"+str(t))
+# l.grid(row=1,column=1)
 
 root.mainloop()
