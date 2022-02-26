@@ -18,6 +18,17 @@ def C():
 
 def EVAL():
     val = list(e.get())
+    value = e.get()
+
+    first = value[0]
+    if first == 'x' or first == '-' or first == '+' or first == '':
+        e.delete(0,END)
+        return e.insert(0,value)
+    last = value[-1]
+    if last == 'x' or last == '-' or last == '+' or last == '':
+        e.delete(0,END)
+        return e.insert(0,value)
+    
     if val != []:
         temp = ""
         for i in val:
@@ -47,7 +58,7 @@ btn_add = Button(root, text="+", padx=40, pady=20, command=lambda : Ins("+"))
 btn_sub = Button(root, text="-", padx=60, pady=20, command=lambda : Ins("-"))
 btn_mul = Button(root, text="x", padx=60, pady=20, command=lambda : Ins("x"))
 btn_div = Button(root, text="/", padx=60, pady=20, command=lambda : Ins("/"))
-btn_equal = Button(root, text="=", padx=60, pady=20, command=lambda : EVAL())
+btn_equal = Button(root, text="=", padx=60, pady=20, command=EVAL)
 btn_clear = Button(root, text="C", padx=60, pady=20, command=C)
 
 btn_0.grid(row=4,column=1)
