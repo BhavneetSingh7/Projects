@@ -1,9 +1,9 @@
 from menu import *
 from tkinter import *
 
-
 root = Tk()
 root.title("Editor")
+root.config(background="#424242")
 
 
 m = Menu(root)
@@ -11,7 +11,7 @@ root.config(menu=m)
 
 
 scroll = Scrollbar(root)
-editArea = Text(root,width=140,height=39,yscrollcommand=scroll.set)
+editArea = Text(root,width=151,height=40,foreground="#00CD00",fg="#00CD00",highlightcolor="#00CD00",highlightbackground="#00CD00",inactiveselectbackground="#00CD00",selectbackground="#00CD00",selectforeground="#00CD00",background="black",insertbackground="#00CD00",yscrollcommand=scroll.set)
 t = editArea.get("1.0","1.10")
 
 
@@ -41,8 +41,29 @@ editmenu.add_command(label='Comment Region',command=EDIT.CommentRegion)
 editmenu.add_command(label='Uncomment Region',command=EDIT.UnCommentRegion)
 
 
-editArea.grid(row=0,column=4,sticky=(N,E,W,S))
-scroll.grid(row=0,column=5, sticky=(N,S))
+Tab = Frame(root,height=20)
+Tab.grid(row=0,column=1)
+
+w=0
+SideBar = Frame(root,width=w,height=1000,bg="#404040")
+def chg():
+    global w,SideBar,editArea
+    if w==0:
+        w = 150
+        editArea.config(width=132)
+        SideBar.config(width=w)
+    else:
+        w=0
+        editArea.config(width=151)
+        SideBar.config(width=w)
+    return w
+
+SidebarButton = Button(root,width=5,background="gray",command=chg)
+SideBar.grid(row = 1,column=1)
+SidebarButton.grid(row=1,column=0)
+
+editArea.grid(row=1,column=4,sticky=(N,E,W,S))
+scroll.grid(row=1,column=5, sticky=(N,S))
 scroll.config(command=editArea.yview)
 
 
